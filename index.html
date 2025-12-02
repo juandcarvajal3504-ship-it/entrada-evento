@@ -1,72 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Entrada al Evento</title>
 
-  <!-- Librería para generar PDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
   <style>
+    /* FONDO DE PANTALLA */
     body {
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      text-align: center;
+      background-image: url('fondo.jpg'); /* 👉 Cambia el nombre de tu imagen */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .container {
+      background: rgba(255, 255, 255, 0.83);
+      max-width: 600px;
+      margin: 80px auto;
       padding: 40px;
-      background-color: #f0f0f0;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0,0,0,0.3);
     }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      max-width: 400px;
-      margin: auto;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
-    button {
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    /* BOTÓN */
+    .btn {
       background: #007bff;
       color: white;
+      padding: 15px 25px;
+      font-size: 1.2rem;
       border: none;
-      padding: 12px 20px;
+      border-radius: 10px;
       cursor: pointer;
-      border-radius: 8px;
-      margin-top: 20px;
-      font-size: 16px;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
     }
-    button:hover {
+
+    .btn:hover {
       background: #0056b3;
     }
   </style>
+
 </head>
 <body>
 
-  <div class="card">
-    <h2>🎟️ Entrada al Evento</h2>
-    <p>Gracias por asistir. Descarga aquí tu entrada oficial en PDF.</p>
+  <div class="container">
+    <h1>🎫 Entrada al Evento</h1>
 
-    <button onclick="descargarPDF()">Descargar Entrada en PDF</button>
+    <p>Gracias por asistir. Aquí puedes descargar tu entrada en PDF:</p>
+
+    <!-- BOTÓN DE DESCARGA -->
+    <a class="btn" href="entrada.pdf" download>Descargar PDF</a>
   </div>
-
-  <script>
-    async function descargarPDF() {
-      const { jsPDF } = window.jspdf;
-
-      const pdf = new jsPDF();
-
-      // Contenido del PDF
-      pdf.setFontSize(22);
-      pdf.text("Entrada al Evento", 20, 30);
-
-      pdf.setFontSize(16);
-      pdf.text("Acceso válido para 1 persona.", 20, 50);
-
-      pdf.text("Fecha: 2025", 20, 70);
-      pdf.text("Estado: Confirmado ✔️", 20, 90);
-
-      // Guardar el archivo
-      pdf.save("entrada_evento.pdf");
-    }
-  </script>
 
 </body>
 </html>
